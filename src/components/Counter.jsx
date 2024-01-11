@@ -5,19 +5,9 @@ function Counter() {
     const savedCount = localStorage.getItem('count');
     return savedCount ? JSON.parse(savedCount) : 0;
   });
-  const [savedValues, setSavedValues] = useState([]);
-
-  useEffect(() => {
-    const savedCount = localStorage.getItem('count');
+  const [savedValues, setSavedValues] = useState(() => {
     const savedValues = localStorage.getItem('savedValues');
-
-    if (savedCount) {
-      setCount(JSON.parse(savedCount));
-    }
-
-    if (savedValues) {
-      setSavedValues(JSON.parse(savedValues));
-    }
+    return savedValues ? JSON.parse(savedValues) : 0;
   }, []);
 
   useEffect(() => {
