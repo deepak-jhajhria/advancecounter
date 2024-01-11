@@ -11,6 +11,11 @@ function Counter() {
   }, []);
 
   useEffect(() => {
+    const savedValues = localStorage.getItem('savedValues');
+    savedValues ? JSON.parse(savedValues) : 0;
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem('count', JSON.stringify(count));
     localStorage.setItem('savedValues', JSON.stringify(savedValues));
   }, [count, savedValues]);
